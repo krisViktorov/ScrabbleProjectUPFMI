@@ -1,5 +1,9 @@
 #include <iostream>
 #include <string>
+#include <fstream>
+#include <set>
+
+
 
 using namespace std;
 
@@ -8,6 +12,18 @@ int main() {
 	int rounds = 10;
 	int givenLetters = 10;
 
+	// copying words from dictionary file to a set of strings
+	set<string> dictionary;
+	ifstream readDictionary("dictionaryDemo.txt");
+	if (!readDictionary) { // checking if file is successfully opened
+		cout << "Error! Failed to open dictionary!";
+		return 0; // ending program
+	}
+	string word;
+	while (getline(readDictionary, word)) {
+		dictionary.insert(word);
+	}
+	readDictionary.close();
 
 	// Main menu
 	while (true) { // while cycle for returning to start of menu
@@ -19,7 +35,7 @@ int main() {
 		}
 		if (menuChoice == 1) {
 			// New game
-
+			int score = 0;
 
 			continue; // back to main menu
 		}
@@ -66,7 +82,21 @@ int main() {
 			getline(cin >> ws, newWord);
 
 			// Entering new word in dictionary
-
+			ofstream writeInDictionary("dictionaryDemo.txt");
+			if (!writeInDictionary) { // checking if file is successfully opened
+				cout << "Error! Failed to open dictionary!";
+				return 0; // ending program
+			}
+			
+			// check if word is already in dictionary
+			if (dictionary.count(newWord)) {
+				cout << "The word you entered is already in the dictionary";
+			}
+			else {
+				writeInDictionary << endl << newWord;
+				dictionary.insert(newWord);
+			}
+			writeInDictionary.close();
 			continue; // back to main menu
 		}
 		else {
