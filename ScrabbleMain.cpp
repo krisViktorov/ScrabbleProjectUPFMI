@@ -1,3 +1,20 @@
+/**
+*
+* Solution to course project # 8
+* Introduction to programming course
+* Faculty of Mathematics and Informatics of Sofia University
+* Winter semester 2022/2023
+*
+* @author <Kristian Viktorov>
+* @idnumber 1MI0600187
+* @compiler VC
+*
+* Main file for starting game
+*
+*/
+
+
+
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -5,16 +22,12 @@
 #include <cstdlib>
 
 using namespace std;
-
+// swaps the values of two chars
 void swap(char &a, char &b) {
 	char temp = a;
 	a = b;
 	b = temp;
 }
-
-
-
-
 
 // converts all capital letters in string to lower case
 void toLowerCase(string &str) {
